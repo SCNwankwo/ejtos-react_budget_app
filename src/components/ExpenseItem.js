@@ -24,12 +24,26 @@ const ExpenseItem = (props) => {
         });
 
     }
+    const decreaseAllocation = (dname) => {
+        const expense = {
+            name: dname,
+            cost: 10,
+        };
+
+        dispatch({
+            type: 'SUBSTRACT_EXPENSE',
+            payload: expense
+        });
+
+    }
 
     return (
         <tr>
         <td>{props.name}</td>
         <td>£{props.cost}</td>
-        <td><button onClick={event=> increaseAllocation(props.name)}>+</button></td>
+        {/* <td><button onClick={event=> increaseAllocation(props.name)}>+</button></td> */}
+        <td><img src="https://pngimg.com/uploads/plus/plus_PNG121.png" alt="-" width="48" height="48" onClick={event=> increaseAllocation(props.name)}></img></td>
+        <td><img src="https://pngimg.com/uploads/minus/minus_PNG60.png" alt="-" width="48" height="48" onClick={event=> decreaseAllocation(props.dname)}></img></td>
         <td><TiDelete size='1.5em' onClick={handleDeleteExpense}></TiDelete></td>
         </tr>
     );
